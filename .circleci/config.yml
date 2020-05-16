@@ -1,30 +1,70 @@
----
-version: 2.1
+# ---
+# version: 2.1
 
-orbs:
-  circle-agent: feedyard/circleci-agent-publish@dev:latest
+# orbs:
+#   executor-tools: feedyard/executor-tools@0.4.0
+#   common: feedyard/common-pipeline-tasks@0.6.0
 
-workflows:
-  di-circleci-remote-docker-image-pipeline:
-    jobs:
-      - circle-agent/dev-release:
-          after_build:
-            - run:
-                name: configuration testing of the image
-                command: |
-                  set -euo pipefail
-                  inspec exec --no-distinct-exit profiles/cis-docker
-                  CID="$(docker run -it -d --entrypoint bash << parameters.registry >>/<< parameters.image >>:<< parameters.tag >>)"
-                  inspec exec profiles/circleci-remote-docker/ -t docker://$CID
-                  docker rm -f $CID
-          filters:
-            branches:
-              only: master
-            tags:
-              ignore: /.*/
-      - circle-agent/publish:
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /.*/
+# # yaml anchor filters
+# on-push-master: &on-push-master
+#   branches:
+#     only: /master/
+#   tags:
+#     ignore: /.*/
+
+# on-tag-master: &on-tag-master
+#   branches:
+#     ignore: /.*/
+#   tags:
+#     only: /.*/
+
+
+# workflows:
+#   version: 2
+
+#   di-circleci-remote-docker-executor-pipeline:
+#     jobs:
+#       - executor-tools/dev-release:
+#           name: dev-release
+#           context: executor-publishing
+#           image: twdps/circleci-remote-docker
+#           after-build:
+#             - run:
+#                 name: configuration testing
+#                 command: ash test.sh
+#           filters: *on-push-master
+#       - executor-tools/publish:
+#           context: executor-publishing
+#           image: feedyard/circleci-remote-docker
+#           after-publish:
+#             - common/slack:
+#                 title: New Executor Version
+#                 message: new version published feedyard/circleci-remote-docker $CIRCLE_TAG
+#                 webhook: SLACK_WEBHOOK
+#           clean-tags:
+#             - executor-tools/clean-docker-hub:
+#                 image: feedyard/circleci-remote-docker
+#                 registry-login: DOCKERLOGIN
+#                 registry-password: DOCKERTOKEN
+#           filters: *on-tag-master
+
+#   # builds nightly from .unpinned Dockerfile in order to always be a latest base image and installed packages
+#   circleci-remote-docker-executor-nightly-build:
+#     triggers:
+#       - schedule:
+#           cron: "0 6 * * *"
+#           filters:
+#             branches:
+#               only:
+#                 - master
+#     jobs:
+#       - executor-tools/dev-release:
+#           name: nightly-build
+#           context: executor-publishing
+#           image: feedyard/circleci-remote-docker
+#           dockerfile: Dockerfile.unpinned
+#           tag: nightly
+#           after-build:
+#             - run:
+#                 name: configuration testing
+#                 command: ash test_nightly.sh
