@@ -4,7 +4,7 @@
 		<img alt="Docker Logo" src="https://raw.githubusercontent.com/ThoughtWorks-DPS/di-circleci-remote-docker/master/img/circle-docker.svg?sanitize=true" width="75" />
 		<img alt="Ubuntu Logo" src="https://raw.githubusercontent.com/ThoughtWorks-DPS/di-circleci-remote-docker/master/img/alpine.png?sanitize=true" width="75" />
 	</p>
-  <p><span style="color:SlateBlue;font-size:46px;"><strong>T</strong>hought<strong>W</strong>orks <strong>DPS Convenience Images</strong></span></p>
+  <p><strong>T</strong>hought<strong>W</strong>orks <strong>DPS Convenience Images</strong></span></p>
   <h1>twdps/di-circleci-remote-docker</h1>
 	<h4>A Continous Integration focused Alpine Docker image built to run on CircleCI</h4>
 </div>
@@ -20,3 +20,5 @@ Based on Alpine Linux. Minimum configuration to use docker image as CircleCI [re
 | gzip            |
 | ca-certificates |
 
+
+okay
