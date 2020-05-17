@@ -1,70 +1,82 @@
-# ---
-# version: 2.1
+---
+version: 2.1
 
-# orbs:
-#   executor-tools: feedyard/executor-tools@0.4.0
-#   common: feedyard/common-pipeline-tasks@0.6.0
+orbs:
+  docker: circleci/docker@1.0.1
+  snyk: snyk/snyk@0.0.10
 
-# # yaml anchor filters
-# on-push-master: &on-push-master
-#   branches:
-#     only: /master/
-#   tags:
-#     ignore: /.*/
+# yaml anchor filters
+on-push-master: &on-push-master
+  branches:
+    only: /master/
+  tags:
+    ignore: /.*/
 
-# on-tag-master: &on-tag-master
-#   branches:
-#     ignore: /.*/
-#   tags:
-#     only: /.*/
+on-tag-master: &on-tag-master
+  branches:
+    ignore: /.*/
+  tags:
+    only: /.*/
 
 
-# workflows:
-#   version: 2
+workflows:
+  di-circleci-remote-docker-image-pipeline:
+    jobs:
+      - docker/hadolint:
+          filters: *on-push-master
+      - docker/publish:
+          name: test-build
+          context: ZTW
+          deploy: false
+          image: thoughtworks-dps/di-circleci-remote-docker
+          lint-dockerfile: true
+          tag: edge
+          requires:
+            - docker/hadolint
+          filters: *on-push-master
+          after_build:
+            - snyk/scan:
+                docker-image-name: thoughtworks-dps/di-circleci-remote-docker:edge
+                organization: thoughtworks-dps
+                fail-on-issues: false
+                monitor-on-build: false
+            - run:
+                command: |
+                  CID=$(docker run --name cis-test-di-circleci-remote-docker \
+                                   -it -d --entrypoint "/bin/ash" \
+                                   "thoughtworks-dps/di-circleci-remote-docker:edge")
+                  docker run -it \
+                             -v /var/run/docker.sock:/var/run/docker.sock \
+                             -e IMAGE_NAME="thoughtworks-dps/di-circleci-remote-docker" \
+                             -e IMAGE_TAG="edge" \
+                             -e CID="$CID" \
+                             "feedyard/docker-benchmark" standard
+      - docker/publish:
+          name: release
+          context: ci
+          image: thoughtworks-dps/di-circleci-remote-docker
+          tag: '$CIRCLE_TAG,stable'
+          filters: *on-tag-master
 
-#   di-circleci-remote-docker-executor-pipeline:
-#     jobs:
-#       - executor-tools/dev-release:
-#           name: dev-release
-#           context: executor-publishing
-#           image: twdps/circleci-remote-docker
-#           after-build:
-#             - run:
-#                 name: configuration testing
-#                 command: ash test.sh
-#           filters: *on-push-master
-#       - executor-tools/publish:
-#           context: executor-publishing
-#           image: feedyard/circleci-remote-docker
-#           after-publish:
-#             - common/slack:
-#                 title: New Executor Version
-#                 message: new version published feedyard/circleci-remote-docker $CIRCLE_TAG
-#                 webhook: SLACK_WEBHOOK
-#           clean-tags:
-#             - executor-tools/clean-docker-hub:
-#                 image: feedyard/circleci-remote-docker
-#                 registry-login: DOCKERLOGIN
-#                 registry-password: DOCKERTOKEN
-#           filters: *on-tag-master
 
-#   # builds nightly from .unpinned Dockerfile in order to always be a latest base image and installed packages
-#   circleci-remote-docker-executor-nightly-build:
-#     triggers:
-#       - schedule:
-#           cron: "0 6 * * *"
-#           filters:
-#             branches:
-#               only:
-#                 - master
-#     jobs:
-#       - executor-tools/dev-release:
-#           name: nightly-build
-#           context: executor-publishing
-#           image: feedyard/circleci-remote-docker
-#           dockerfile: Dockerfile.unpinned
-#           tag: nightly
-#           after-build:
-#             - run:
-#                 name: configuration testing
-#                 command: ash test_nightly.sh
+
+  # builds nightly from .unpinned Dockerfile in order to test the latest base image and installed packages
+  # circleci-remote-docker-executor-nightly-build:
+  #   triggers:
+  #     - schedule:
+  #         cron: "0 6 * * *"
+  #         filters:
+  #           branches:
+  #             only:
+  #               - master
+  #   jobs:
+  #     - executor-tools/dev-release:
+  #         name: nightly-build
+  #         context: executor-publishing
+  #         image: feedyard/circleci-remote-docker
+  #         dockerfile: Dockerfile.unpinned
+  #         tag: nightly
+  #         after-build:
+  #           - run:
+  #               name: configuration testing
+  #               command: ash test_nightly.sh

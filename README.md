@@ -6,6 +6,7 @@
 	</p>
   <h3>ThoughtWorks DPS Convenience Images</h3>
   <h1>twdps/di-circleci-remote-docker</h1>
+  [![feedyard](https://circleci.com/gh/ThoughtWorks-DPS/di=circleci-remote-docker.svg?style=shield)](https://app.circleci.com/pipelines/github/ThoughtWorks-DPS/di-circleci-remote-docker) ![Software License](https://img.shields.io/badge/license-MIT-blue.svg)  
   <h5>A Continous Integration focused Alpine Docker image built to run on CircleCI</h5>
 </div>
 <br />
