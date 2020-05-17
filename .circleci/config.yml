@@ -38,7 +38,7 @@ workflows:
             - snyk/scan:
                 docker-image-name: twdps/di-circleci-remote-docker:edge
                 organization: thoughtworks-dps
-                fail-on-issues: false
+                fail-on-issues: true
                 monitor-on-build: false
             - run:
                 command: |
@@ -64,8 +64,8 @@ workflows:
           tag: '$CIRCLE_TAG,stable'
           filters: *on-tag-master
 
-  builds nightly from .unpinned Dockerfile in order to test the latest base image and installed packages
-  di-circleci-remote-docker-executor-image-build:
+  # builds nightly from .unpinned Dockerfile in order to test the latest base image and installed packages
+  di-circleci-remote-docker-image-nightly-build:
     triggers:
       - schedule:
           cron: "0 6 * * *"
@@ -74,13 +74,16 @@ workflows:
               only:
                 - master
     jobs:
-      - executor-tools/dev-release:
+      - docker/publish:
           name: nightly-build
-          context: executor-publishing
-          image: feedyard/circleci-remote-docker
-          dockerfile: Dockerfile.unpinned
+          context: ZTW
+          deploy: false
+          image: twdps/di-circleci-remote-docker
+          lint-dockerfile: true
           tag: nightly
-          after-build:
-            - run:
-                name: configuration testing
-                command: ash test_nightly.sh
+          after_build:
+            - snyk/scan:
+                docker-image-name: twdps/di-circleci-remote-docker:edge
+                organization: thoughtworks-dps
+                fail-on-issues: true
+                monitor-on-build: false
