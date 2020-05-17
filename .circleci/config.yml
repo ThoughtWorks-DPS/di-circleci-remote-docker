@@ -27,8 +27,8 @@ workflows:
       - docker/publish:
           name: test-build
           context: ZTW
-          deploy: false
-          image: thoughtworks-dps/di-circleci-remote-docker
+          deploy: true
+          image: twdps/di-circleci-remote-docker
           lint-dockerfile: true
           tag: edge
           requires:
@@ -36,7 +36,7 @@ workflows:
           filters: *on-push-master
           after_build:
             - snyk/scan:
-                docker-image-name: thoughtworks-dps/di-circleci-remote-docker:edge
+                docker-image-name: twdps/di-circleci-remote-docker:edge
                 organization: thoughtworks-dps
                 fail-on-issues: false
                 monitor-on-build: false
@@ -44,21 +44,25 @@ workflows:
                 command: |
                   CID=$(docker run --name cis-test-di-circleci-remote-docker \
                                    -it -d --entrypoint "/bin/ash" \
-                                   "thoughtworks-dps/di-circleci-remote-docker:edge")
+                                   "twdps/di-circleci-remote-docker:edge")
                   docker run -it \
                              -v /var/run/docker.sock:/var/run/docker.sock \
-                             -e IMAGE_NAME="thoughtworks-dps/di-circleci-remote-docker" \
+                             -e IMAGE_NAME="twdps/di-circleci-remote-docker" \
                              -e IMAGE_TAG="edge" \
                              -e CID="$CID" \
-                             "feedyard/docker-benchmark" standard
+                             "feedyard/docker-benchmark" distroless
+                  docker run -it --rm \
+                            -v /var/run/docker.sock:/var/run/docker.sock \
+                            -e CHEF_LICENSE="accept" \
+                            -v "$(pwd)":/share \
+                            chef/inspec exec profiles/circleci-remote-docker \
+                            -t docker://"${CID}"
       - docker/publish:
           name: release
           context: ci
-          image: thoughtworks-dps/di-circleci-remote-docker
+          image: twdps/di-circleci-remote-docker
           tag: '$CIRCLE_TAG,stable'
           filters: *on-tag-master
-
-
 
   # builds nightly from .unpinned Dockerfile in order to test the latest base image and installed packages
   # circleci-remote-docker-executor-nightly-build:
