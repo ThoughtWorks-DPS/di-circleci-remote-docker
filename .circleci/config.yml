@@ -64,23 +64,23 @@ workflows:
           tag: '$CIRCLE_TAG,stable'
           filters: *on-tag-master
 
-  # builds nightly from .unpinned Dockerfile in order to test the latest base image and installed packages
-  # circleci-remote-docker-executor-nightly-build:
-  #   triggers:
-  #     - schedule:
-  #         cron: "0 6 * * *"
-  #         filters:
-  #           branches:
-  #             only:
-  #               - master
-  #   jobs:
-  #     - executor-tools/dev-release:
-  #         name: nightly-build
-  #         context: executor-publishing
-  #         image: feedyard/circleci-remote-docker
-  #         dockerfile: Dockerfile.unpinned
-  #         tag: nightly
-  #         after-build:
-  #           - run:
-  #               name: configuration testing
-  #               command: ash test_nightly.sh
+  builds nightly from .unpinned Dockerfile in order to test the latest base image and installed packages
+  di-circleci-remote-docker-executor-image-build:
+    triggers:
+      - schedule:
+          cron: "0 6 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - executor-tools/dev-release:
+          name: nightly-build
+          context: executor-publishing
+          image: feedyard/circleci-remote-docker
+          dockerfile: Dockerfile.unpinned
+          tag: nightly
+          after-build:
+            - run:
+                name: configuration testing
+                command: ash test_nightly.sh
