@@ -20,15 +20,4 @@ This image is also very useful for CircleCI users to use as a base for their own
 This image contains the minimum tools required to operate a build on CircleCI (such as `git`) as well as extremely popular and useful tools in CircleCI (such as `docker`).
 
 
-Based on Alpine Linux. Minimum configuration to use docker image as CircleCI [remote docker executor](https://circleci.com/docs/2.0/custom-images/#section=configuration).
-
-| apk add         |
-|-----------------|
-| git             |
-| openssh         |
-| tar             |
-| gzip            |
-| ca-certificates |
-
-
-okay
+Based on Alpine Linux. Minimum configuration to use docker image as CircleCI [remote docker executor](https://circleci.com/docs/2.0/custom-images/#section=configuration)
