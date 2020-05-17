@@ -59,7 +59,7 @@ workflows:
                             -t docker://"${CID}"
       - docker/publish:
           name: release
-          context: ci
+          context: ZTW
           image: twdps/di-circleci-remote-docker
           tag: '$CIRCLE_TAG,stable'
           filters: *on-tag-master
