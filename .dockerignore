@@ -1,0 +1,6 @@
+.circleci/
+img/
+.pre-commit-config.yaml
+Dockerfile.unpinned
+requirements-local.txt
+testlocal.sh
