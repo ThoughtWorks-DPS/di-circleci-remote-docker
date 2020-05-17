@@ -37,7 +37,7 @@ workflows:
           after_build:
             - snyk/scan:
                 docker-image-name: twdps/di-circleci-remote-docker:edge
-                organization: thoughtworks-dps
+                organization: twdps
                 fail-on-issues: true
                 monitor-on-build: false
             - run:
@@ -84,6 +84,6 @@ workflows:
           after_build:
             - snyk/scan:
                 docker-image-name: twdps/di-circleci-remote-docker:edge
-                organization: thoughtworks-dps
+                organization: twdps
                 fail-on-issues: true
                 monitor-on-build: false
