@@ -6,7 +6,7 @@
 	</p>
   <h3>ThoughtWorks DPS Convenience Images</h3>
   <h1>twdps/di-circleci-remote-docker</h1>
-  [![feedyard](https://circleci.com/gh/ThoughtWorks-DPS/di-circleci-remote-docker.svg?style=shield)](https://app.circleci.com/pipelines/github/ThoughtWorks-DPS/di-circleci-remote-docker) ![Software License](https://img.shields.io/badge/license-MIT-blue.svg)  
+  <a href="https://app.circleci.com/pipelines/github/ThoughtWorks-DPS/di-circleci-remote-docker"><img src="https://circleci.com/gh/ThoughtWorks-DPS/di-circleci-remote-docker.svg?style=shield"></a> <a href="https://hub.docker.com/repository/docker/twdps/di-circleci-remote-docker"><img src="https://img.shields.io/docker/v/twdps/di-circleci-remote-docker?sort=semver"></a> <a href="https://hub.docker.com/repository/docker/twdps/di-circleci-remote-docker"><img src="https://img.shields.io/docker/image-size/twdps/di-circleci-remote-docker/2020.05"></a> <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/github/license/ThoughtWorks-DPS/di-circleci-remote-docker"></a>
   <h5>A Continous Integration focused Alpine Docker image built to run on CircleCI</h5>
 </div>
 <br />
