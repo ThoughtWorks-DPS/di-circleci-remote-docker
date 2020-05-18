@@ -48,3 +48,21 @@ control 'gzip version' do
     its('stdout') { should include ('1.10') }
   end
 end
+
+describe user('circleci') do
+  it { should exist }
+  its('uid') { should eq 3434 }
+  its('gid') { should eq 3434 }
+  its('group') { should eq 'circleci' }
+  its('home') { should eq 'circleci' }
+end
+
+describe directory('/home/circleci') do
+  its('owner') { should eq 'circleci' }
+  its('group') { should eq 'circleci' }
+end
+
+describe directory('/home/circleci/project') do
+  its('owner') { should eq 'circleci' }
+  its('group') { should eq 'circleci' }
+end

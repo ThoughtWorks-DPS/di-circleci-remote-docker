@@ -32,13 +32,15 @@ ENV PATH=/home/circleci/bin:/home/circleci/.local/bin:$PATH \
     LC_ALL="en_US.UTF-8"
 
 ENV USER=circleci
-RUN addgroup -S $USER  && \
+RUN addgroup --gid 3434 -S $USER  && \
     adduser --uid 3434 --ingroup $USER --home $USER --disabled-password --no-create-home $USER && \
     echo "$USER ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$USER && \
     chmod 0440 /etc/sudoers.d/$USER && \
-    mkdir -p /home/circleci/project && \
-    chown -R $USER:$USER /home/circleci/project
+    mkdir -p /home/circleci && \
+    chown -R $USER:$USER /home/circleci
+
 USER circleci
+RUN mkdir -p /home/circleci/project
 
 WORKDIR /home/circleci/project
 
