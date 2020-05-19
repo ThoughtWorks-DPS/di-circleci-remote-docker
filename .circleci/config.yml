@@ -26,7 +26,7 @@ workflows:
           filters: *on-push-master
       - docker/publish:
           name: test-build
-          context: ZTW
+          context: twdps-di
           deploy: true
           image: twdps/di-circleci-remote-docker
           lint-dockerfile: true
@@ -59,7 +59,7 @@ workflows:
                             -t docker://"${CID}"
       - docker/publish:
           name: release
-          context: ZTW
+          context: twdps-di
           image: twdps/di-circleci-remote-docker
           tag: '$CIRCLE_TAG,stable'
           filters: *on-tag-master
