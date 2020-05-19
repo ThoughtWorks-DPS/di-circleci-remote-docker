@@ -35,11 +35,22 @@ workflows:
             - docker/hadolint
           filters: *on-push-master
           after_build:
-            - snyk/scan:
-                docker-image-name: twdps/di-circleci-remote-docker:edge
-                organization: twdps
-                fail-on-issues: true
-                monitor-on-build: false
+            - run:
+                command: |
+                  docker run -it \
+                             -v /var/run/docker.sock:/var/run/docker.sock \
+                             -e "SNYK_TOKEN=$SNYK_TOKEN" \
+                             -v "${PWD}:/project" \
+                             snyk/snyk-cli:docker test \
+                             --org=twdps \
+                             --severity-threshold=low \
+                             --docker twdps/di-circleci-remote-docker:2020.05 \
+                             --file=Dockerfile
+            # - snyk/scan:
+            #     docker-image-name: twdps/di-circleci-remote-docker:edge
+            #     organization: twdps
+            #     fail-on-issues: true
+            #     monitor-on-build: false
             - run:
                 command: |
                   CID=$(docker run --name cis-test-di-circleci-remote-docker \
