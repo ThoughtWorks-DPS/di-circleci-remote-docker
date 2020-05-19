@@ -54,7 +54,7 @@ describe user('circleci') do
   its('uid') { should eq 3434 }
   its('gid') { should eq 3434 }
   its('group') { should eq 'circleci' }
-  its('home') { should eq 'circleci' }
+  its('home') { should eq '/home/circleci' }
 end
 
 describe directory('/home/circleci') do
