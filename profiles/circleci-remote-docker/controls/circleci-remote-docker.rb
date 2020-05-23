@@ -8,7 +8,7 @@ control 'packages' do
     its('stdout') { should include ('tar-1.32-r1') }
     its('stdout') { should include ('gzip-1.10-r0') }
     its('stdout') { should include ('ca-certificates-20191127-r1') }
-    its('stdout') { should include ('sudo-1.8.31-r0') }
+    its('stdout') { should include ('sudo-1.8.31p1-r1') }
     its('stdout') { should include ('libintl-0.20.1-r2') }
   end
 end
@@ -27,7 +27,7 @@ control 'openssh version' do
   title 'confirm openssh version installed'
   desc 'confirm version reported by openssh matches the desired version'
   describe command('ssh -V') do
-    its('stderr') { should include ('8.1') }
+    its('stderr') { should include ('8.2') }
   end
 end
 
