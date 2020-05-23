@@ -47,7 +47,7 @@ workflows:
                              --file=Dockerfile
             - run:
                 command: |
-                  CID=$(docker run --name cis-test-di-circleci-remote-docker \
+                  CID=$(docker run --name di-circleci-remote-docker-edge \
                                    -it -d --entrypoint "/bin/ash" \
                                    "twdps/di-circleci-remote-docker:edge")
                   docker run -it \
