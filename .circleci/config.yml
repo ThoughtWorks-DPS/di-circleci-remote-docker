@@ -56,7 +56,7 @@ workflows:
                              -e IMAGE_TAG="edge" \
                              -e CONTAINER_USER="circleci" \
                              -e CID="$CID" \
-                             "feedyard/docker-benchmark" distroless
+                             "feedyard/docker-benchmark"
                   docker run -it --rm \
                             -v /var/run/docker.sock:/var/run/docker.sock \
                             -e CHEF_LICENSE="accept" \
@@ -69,4 +69,3 @@ workflows:
           image: twdps/di-circleci-remote-docker
           tag: '$CIRCLE_TAG,stable'
           filters: *on-tag-master
-
