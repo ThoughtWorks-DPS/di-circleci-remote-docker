@@ -52,7 +52,7 @@ workflows:
                                    "twdps/di-circleci-remote-docker:edge")
                   docker run -it \
                              -v /var/run/docker.sock:/var/run/docker.sock \
-                             -e IMAGE_NAME="twdps/di-circleci-remote-docker" \
+                             -e IMAGE_NAME="di-circleci-remote-docker" \
                              -e IMAGE_TAG="edge" \
                              -e CONTAINER_USER="circleci" \
                              -e CID="$CID" \
