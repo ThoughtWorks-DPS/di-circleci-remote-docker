@@ -15,8 +15,18 @@ With some inspiration from the CircleCI convenience images, `twdps/di-circleci-r
 Alpin-based docker image created with continuous integration builds in mind. As the name suggests, this  
 image is designed to serve as a starter image for building a use-tailored CircleCI [remote docker executor](https://circleci.com/docs/2.0/custom-images/#section=configuration).
 
-This image contains the minimum packages required to operate a build on CircleCI, including configuring  
-a `USER` definition and multi-language support.
+This image contains the minimum packages required to operate a build on CircleCI, along with configuring  
+a `USER circleci` definition and multi-language support.
+
+_difference with cimg libraries._ Enterprise settings often require specific security and configuration testing.  
+The twdps series of convenience images is based on Alpine linux and includes common sdlc practices including  
+benchmark testing.  
+
+**Other images in this series**  
+
+twdps/di-circleci-infra-image  
+twdps/di-circleci-k8s-deploy-image 
+twdps/di-circleci-python-image  
 
 ## Table of Contents
 
@@ -101,7 +111,9 @@ To build and test the Docker image locally, run the `testlocal.sh` script:
 ```
 
 This script build the image and uses `chef/inspec` and `feedyard/docker-benchmark` to test the health  
-and secure configuration of the image.
+and secure configuration of the image. You can include a _tag_ parameter to use other local Dockerfile.  
+Dockerfile.unpinned is included as an example; it is built from alpine:latest and the packags do not  
+include versions. This can be used for early detection of upcoming breaking changes.  
 
 ### Publishing Official Images (for Maintainers only)
 
