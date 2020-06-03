@@ -11,21 +11,16 @@
 </div>
 <br />
 
-With some inspiration from the CircleCI convenience images, `twdps/di-circleci-remote-docker` is an  
-Alpin-based docker image created with continuous integration builds in mind. As the name suggests, this  
-image is designed to serve as a starter image for building a use-tailored CircleCI [remote docker executor](https://circleci.com/docs/2.0/custom-images/#section=configuration).
+With some inspiration from the CircleCI convenience images, `twdps/di-circleci-remote-docker` is an Alpin-based docker image created with continuous integration builds in mind. As the name suggests, this image is designed to serve as a starter image for building a use-tailored CircleCI [remote docker executor](https://circleci.com/docs/2.0/custom-images/#section=configuration).  
 
-This image contains the minimum packages required to operate a build on CircleCI, along with configuring  
-a `USER circleci` definition and multi-language support.
+This image contains the minimum packages required to operate a build on CircleCI, along with a `USER circleci` definition and multi-language support.  
 
-_difference with cimg libraries._ Enterprise settings often require specific security and configuration testing.  
-The twdps series of convenience images is based on Alpine linux and includes common sdlc practices including  
-benchmark testing.  
+_difference with cimg libraries._ Enterprise settings often require specific security and configuration testing. The twdps series of convenience images is based on Alpine linux and includes common sdlc practices including benchmark testing.  
 
 **Other images in this series**  
 
 twdps/di-circleci-infra-image  
-twdps/di-circleci-k8s-deploy-image 
+twdps/di-circleci-k8s-deploy-image  
 twdps/di-circleci-python-image  
 
 ## Table of Contents
@@ -54,12 +49,11 @@ RUN curl -L -o node.tar.xz "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NOD
 ```
 
 The tag `2020.05` indicates that the version of the base image used will be the May 2020 release.  
-See how tags work below for more information.
+See how tags work below for more information.  
 
 ## What is Included in the Image
 
-This image is based on the Alpine Linux distribution and contains the minimum requirements needed to be used  
-as a remote docker executor on CircleCI:  
+This image is based on the Alpine Linux distribution and contains the minimum requirements needed to be used as a remote docker executor on CircleCI:  
 
 - git
 - openssh
@@ -80,22 +74,15 @@ twdps/di-circleci-remote-docker:stable
 twdps/di-circleci-remote-docker:<YYYY.MM>
 ```
 
-`edge` - points to the latest version of the Base image. Built from the `HEAD` of the `master` branch.  
-Intended to be used as a testing version of the image with the most recent changes however not  
-guaranteed to be all that stable and not recommended for production software.  
+`edge` - points to the latest version of the Base image. Built from the `HEAD` of the `master` branch. Intended to be used as a testing version of the image with the most recent changes however not guaranteed to be all that stable and not recommended for production software.  
 
-`stable` - points to the latest, production ready base image. For projects that want a decent level of  
-stability while automatically recieving software updates. This is similar to using the `:latest` tag  
-and is not a generally recommended practice. Pin the `FROM` reference to a specific release and  
-adopt new releases as part of your ci process. Typically updated once a month.  
+`stable` - points to the latest, production ready base image. For projects that want a decent level of stability while automatically recieving software updates. This is similar to using the `:latest` tag and is not a generally recommended practice. Pin the `FROM` reference to a specific release and adopt new releases as part of your ci process. Typically updated once a month.  
 
-`<YYYY.MM>` - Release version of the image, referred to by the 4 digit year, dot, and a 2 digit month.  
-For example `2020.09` would be the monthly snapshot tag from May 2020. This is the recommended version  
-for use in an executor Dockerfile.  
+`<YYYY.MM>` - Release version of the image, referred to by the 4 digit year, dot, and a 2 digit month. For example `2020.05` would be the monthly tag from May 2020. This is the recommended version for use in an executor Dockerfile.  
 
 ## Development
 
-Images can be built and run locally with this repository.
+Images can be built and run locally with this repository.  
 This has the following requirements:
 
 - local machine of Linux (Alpine tested) or macOS
@@ -110,28 +97,20 @@ To build and test the Docker image locally, run the `testlocal.sh` script:
 ./testlocal.sh
 ```
 
-This script build the image and uses `chef/inspec` and `feedyard/docker-benchmark` to test the health  
-and secure configuration of the image. You can include a _tag_ parameter to use other local Dockerfile.  
-Dockerfile.unpinned is included as an example; it is built from alpine:latest and the packags do not  
-include versions. This can be used for early detection of upcoming breaking changes.  
+This script builds the image and uses `chef/inspec` and `feedyard/docker-benchmark` to test the health and secure configuration of the image. You can include a _tag_ parameter to use other local Dockerfile. Dockerfile.unpinned is included as an example; it is built from alpine:latest and the packags do not include versions. This can be used for early detection of upcoming breaking changes.  
 
 ### Publishing Official Images (for Maintainers only)
 
-Git push will trigger the dev-build pipeline. In addition to the tests performed in testlocal.sh,  
-a snyk scan is done to expose any known vulnerabilities.  
+Git push will trigger the dev-build pipeline. In addition to the tests performed in testlocal.sh, a snyk scan is done to expose any known vulnerabilities.  
 
-To create a release version, simply tag HEAD with the release version format `YYYY.MM`
+To create a release version, simply tag HEAD with the release version format `YYYY.MM`  
 
 ## Contributing
 
 We encourage [issues](https://github.com/twdps/di-circleci-remote-docker/issues) and [pull requests](https://github.com/twdps/di-circleci-remote-docker/pulls) against this repository. In order to value your time, here are some things to consider:
 
-1. Intended to be the minimum configuration necessary for an alpine-based image to be successfully  
-launched by circleci as a remote docker executor and specifically does not include any other packages.  
-As such, the way to use the image is in the `FROM twdps/di-circleci-remote-docker:tag` statement of your  
-Dockerfile.
-1. PRs are welcome. Given the role of this image as a building block in building CircleCI remote docker executors, it is expected that PRs or Issues will be releated to bugs or compatibility issues. PR's to include additional packages will only be considered where necessary to continue supporting Alpine linux as a remote docker base. 
-
+1. Intended to be the minimum configuration necessary for an alpine-based image to be successfully launched by circleci as a remote docker executor and specifically does not include any other packages. As such, the way to use the image is in the `FROM twdps/di-circleci-remote-docker:tag` statement of your Dockerfile.
+1. PRs are welcome. Given the role of this image as a building block in building CircleCI remote docker executors, it is expected that PRs or Issue will be releated to bugs or compatibility issues. PR's to include additional packages will only be considered where necessary to continue supporting Alpine linux as a remote docker base.  
 
 ## Additional Resources
 
