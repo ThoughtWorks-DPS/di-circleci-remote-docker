@@ -97,7 +97,9 @@ To build and test the Docker image locally, run the `testlocal.sh` script:
 ./testlocal.sh
 ```
 
-This script builds the image and uses `chef/inspec` and `feedyard/docker-benchmark` to test the health and secure configuration of the image. You can include a _tag_ parameter to use other local Dockerfile. Dockerfile.unpinned is included as an example; it is built from alpine:latest and the packags do not include versions. This can be used for early detection of upcoming breaking changes.  
+*requirements for testing*  
+conftest  
+bats  
 
 ### Publishing Official Images (for Maintainers only)
 

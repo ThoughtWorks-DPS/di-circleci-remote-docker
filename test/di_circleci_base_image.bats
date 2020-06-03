@@ -2,23 +2,23 @@
 
 @test "evaluate installed package versions" {
   run bash -c "docker exec di-circleci-remote-docker-edge apk -v info"
-  [[ "${output}" =~ "git-2.24.3-r0" ]]
-  [[ "${output}" =~ "openssh-8.1_p1-r0" ]]
+  [[ "${output}" =~ "git-2.26.2-r0" ]]
+  [[ "${output}" =~ "openssh-8.3_p1-r0" ]]
   [[ "${output}" =~ "tar-1.32-r1" ]]
   [[ "${output}" =~ "gzip-1.10-r0" ]]
-  [[ "${output}" =~ "ca-certificates-20191127-r1" ]]
-  [[ "${output}" =~ "sudo-1.8.31p1-r1" ]]
-  [[ "${output}" =~ "libintl-0.20.1-r2" ]]
+  [[ "${output}" =~ "ca-certificates-20191127-r3" ]]
+  [[ "${output}" =~ "sudo-1.9.0-r0" ]]
+  [[ "${output}" =~ "libintl-0.20.2-r0" ]]
 }
 
 @test "git version" {
   run bash -c "docker exec di-circleci-remote-docker-edge git --version"
-  [[ "${output}" =~ "2.24" ]]
+  [[ "${output}" =~ "2.26" ]]
 }
 
 @test "openssh version" {
   run bash -c "docker exec di-circleci-remote-docker-edge ssh -V"
-  [[ "${output}" =~ "8.2" ]]
+  [[ "${output}" =~ "8.3" ]]
 }
 
 @test "tar version" {
@@ -38,7 +38,7 @@
 
 @test "sudo version" {
   run bash -c "docker exec di-circleci-remote-docker-edge sudo --version"
-  [[ "${output}" =~ "1.8" ]]
+  [[ "${output}" =~ "1.9" ]]
 }
 
 @test "confirm localization" {

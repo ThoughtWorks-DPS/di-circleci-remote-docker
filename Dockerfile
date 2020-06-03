@@ -1,4 +1,4 @@
-FROM alpine:3.11.6
+FROM alpine:3.12.0
 
 LABEL maintainer=<nic.cheneweth@thoughtworks.com>
 
@@ -7,19 +7,19 @@ LABEL maintainer=<nic.cheneweth@thoughtworks.com>
 # hadolint ignore=DL3003
 RUN echo 'http://dl-3.alpinelinux.org/alpine/edge/main' >> /etc/apk/repositories && \
     apk add --no-cache \
-        git==2.24.3-r0 \
-        openssh==8.1_p1-r0 \
+        git==2.26.2-r0 \
+        openssh==8.3_p1-r0 \
         tar==1.32-r1 \
         gzip==1.10-r0 \
-        ca-certificates==20191127-r1 \
-        sudo==1.8.31p1-r1 \
-        libintl==0.20.1-r2 && \
+        ca-certificates==20191127-r3 \
+        sudo==1.9.0-r0 \
+        libintl==0.20.2-r0 && \
         apk --no-cache add --virtual build-dependencies \
-        cmake==3.15.5-r0 \
-        make==4.2.1-r2 \
-        musl-dev==1.1.24-r2 \
-        gcc==9.2.0-r4 \
-        gettext-dev==0.20.1-r2 && \
+        cmake==3.17.2-r0 \
+        make==4.3-r0 \
+        musl-dev==1.1.24-r8 \
+        gcc==9.3.0-r2 \
+        gettext-dev==0.20.2-r0 && \
     wget https://gitlab.com/rilian-la-te/musl-locales/-/archive/master/musl-locales-master.zip && \
     unzip musl-locales-master.zip && cd musl-locales-master && \
     cmake -DLOCALE_PROFILE=OFF -D CMAKE_INSTALL_PREFIX:PATH=/usr . && \
