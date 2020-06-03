@@ -30,6 +30,7 @@ workflows:
           snyk-organization: twdps
           cis-docker-image-scan: true
           bats-test: true
+          entry-point: /bin/ash
           container-name: di-circleci-remote-docker-edge
           filters: *on-push-master
           
