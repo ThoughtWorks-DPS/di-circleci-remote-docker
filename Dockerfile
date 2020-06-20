@@ -11,7 +11,7 @@ RUN echo 'http://dl-3.alpinelinux.org/alpine/edge/main' >> /etc/apk/repositories
         openssh==8.3_p1-r0 \
         tar==1.32-r1 \
         gzip==1.10-r0 \
-        ca-certificates==20191127-r3 \
+        ca-certificates==20191127-r4 \
         sudo==1.9.0-r0 \
         libintl==0.20.2-r0 && \
         apk --no-cache add --virtual build-dependencies \

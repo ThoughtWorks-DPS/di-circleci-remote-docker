@@ -6,7 +6,7 @@
   [[ "${output}" =~ "openssh-8.3_p1-r0" ]]
   [[ "${output}" =~ "tar-1.32-r1" ]]
   [[ "${output}" =~ "gzip-1.10-r0" ]]
-  [[ "${output}" =~ "ca-certificates-20191127-r3" ]]
+  [[ "${output}" =~ "ca-certificates-20191127-r4" ]]
   [[ "${output}" =~ "sudo-1.9.0-r0" ]]
   [[ "${output}" =~ "libintl-0.20.2-r0" ]]
 }
