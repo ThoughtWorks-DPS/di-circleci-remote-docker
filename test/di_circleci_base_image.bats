@@ -41,14 +41,14 @@
   [[ "${output}" =~ "1.9" ]]
 }
 
-@test "confirm localization" {
+@test "confirm localization one" {
   run bash -c "docker exec di-circleci-remote-docker-edge locale -a"
   [[ "${output}" =~ "C.UTF-8" ]]
   [[ "${output}" =~ "fr_FR.UTF-8" ]]
   [[ "${output}" =~ "de_CH.UTF-8" ]]
 }
 
-@test "current localization" {
+@test "current localization two" {
   run bash -c "docker exec di-circleci-remote-docker-edge locale"
   [[ "${output}" =~ "LANG=C.UTF-8" ]]
   [[ "${output}" =~ "LC_ALL=en_US.UTF-8" ]]
@@ -70,8 +70,7 @@
   [[ "${output}" =~ "circleci circleci" ]]
 }
 
-@test "describe /home/circleci" {
+@test "describe /home/circleci/project" {
   run bash -c "docker exec di-circleci-remote-docker-edge ls -ld /home/circleci/project"
   [[ "${output}" =~ "circleci circleci" ]]
 }
-
