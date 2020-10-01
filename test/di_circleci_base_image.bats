@@ -3,7 +3,7 @@
 @test "evaluate installed package versions" {
   run bash -c "docker exec di-circleci-remote-docker-edge apk -v info"
   [[ "${output}" =~ "git-2.26.2-r0" ]]
-  [[ "${output}" =~ "openssh-8.3_p1-r0" ]]
+  [[ "${output}" =~ "openssh-8.4_p1-r0" ]]
   [[ "${output}" =~ "tar-1.32-r1" ]]
   [[ "${output}" =~ "gzip-1.10-r0" ]]
   [[ "${output}" =~ "ca-certificates-20191127-r4" ]]
@@ -18,7 +18,7 @@
 
 @test "openssh version" {
   run bash -c "docker exec di-circleci-remote-docker-edge ssh -V"
-  [[ "${output}" =~ "8.3" ]]
+  [[ "${output}" =~ "8.4" ]]
 }
 
 @test "tar version" {

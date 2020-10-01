@@ -8,7 +8,7 @@ LABEL maintainer=<nic.cheneweth@thoughtworks.com>
 RUN echo 'http://dl-3.alpinelinux.org/alpine/edge/main' >> /etc/apk/repositories && \
     apk add --no-cache \
         git==2.26.2-r0 \
-        openssh==8.3_p1-r0 \
+        openssh==8.4_p1-r0 \
         tar==1.32-r1 \
         gzip==1.10-r0 \
         ca-certificates==20191127-r4 \
