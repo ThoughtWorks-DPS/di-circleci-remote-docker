@@ -48,7 +48,7 @@ workflows:
   di-circleci-infra-image-nightly-build:
     triggers:
       - schedule:
-          cron: "0 6 * * *"
+          cron: "0 0 * * 0"
           filters:
             branches:
               only:
