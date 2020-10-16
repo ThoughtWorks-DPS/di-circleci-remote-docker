@@ -19,9 +19,8 @@ _difference with cimg libraries._ Enterprise settings often require specific sec
 
 **Other images in this series**  
 
+twdps/di-circleci-base-image  
 twdps/di-circleci-infra-image  
-twdps/di-circleci-k8s-deploy-image  
-twdps/di-circleci-python-image  
 
 ## Table of Contents
 
