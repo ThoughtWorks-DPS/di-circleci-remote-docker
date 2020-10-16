@@ -4,6 +4,7 @@ LABEL maintainer=<nic.cheneweth@thoughtworks.com>
 
 # packages required for use as a circleci remote-docker primary container
 # include edge repo for sudo 1.8.31p1-r1. fixes 'setrlimit(RLIMIT_CORE): Operation not permitted' on distroless
+# use openssh 8.4 from edge
 # hadolint ignore=DL3003
 RUN echo 'http://dl-3.alpinelinux.org/alpine/edge/main' >> /etc/apk/repositories && \
     apk add --no-cache \

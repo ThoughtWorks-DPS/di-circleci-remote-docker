@@ -3,7 +3,7 @@
 @test "evaluate installed package versions" {
   run bash -c "docker exec di-circleci-remote-docker-edge apk -v info"
   [[ "${output}" =~ "git-2.26.2-r0" ]]
-  [[ "${output}" =~ "openssh-8.3_p1-r0" ]]
+  [[ "${output}" =~ "openssh-8.4_p1-r0" ]]
   [[ "${output}" =~ "tar-1.32-r1" ]]
   [[ "${output}" =~ "gzip-1.10-r0" ]]
   [[ "${output}" =~ "ca-certificates-20191127-r4" ]]
@@ -18,7 +18,7 @@
 
 @test "openssh version" {
   run bash -c "docker exec di-circleci-remote-docker-edge ssh -V"
-  [[ "${output}" =~ "8.3" ]]
+  [[ "${output}" =~ "8.4" ]]
 }
 
 @test "tar version" {
@@ -41,14 +41,14 @@
   [[ "${output}" =~ "1.9" ]]
 }
 
-@test "confirm localization" {
+@test "confirm localization one" {
   run bash -c "docker exec di-circleci-remote-docker-edge locale -a"
   [[ "${output}" =~ "C.UTF-8" ]]
   [[ "${output}" =~ "fr_FR.UTF-8" ]]
   [[ "${output}" =~ "de_CH.UTF-8" ]]
 }
 
-@test "current localization" {
+@test "current localization two" {
   run bash -c "docker exec di-circleci-remote-docker-edge locale"
   [[ "${output}" =~ "LANG=C.UTF-8" ]]
   [[ "${output}" =~ "LC_ALL=en_US.UTF-8" ]]
@@ -70,8 +70,7 @@
   [[ "${output}" =~ "circleci circleci" ]]
 }
 
-@test "describe /home/circleci" {
+@test "describe /home/circleci/project" {
   run bash -c "docker exec di-circleci-remote-docker-edge ls -ld /home/circleci/project"
   [[ "${output}" =~ "circleci circleci" ]]
 }
-
