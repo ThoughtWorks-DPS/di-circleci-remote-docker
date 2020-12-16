@@ -4,11 +4,9 @@ LABEL maintainer=<nic.cheneweth@thoughtworks.com>
 
 # packages required for use as a circleci remote-docker primary container
 # hadolint ignore=DL3003
-RUN echo 'http://dl-cdn.alpinelinux.org/alpine/edge/main' >> /etc/apk/repositories && \
-    apk add --no-cache \
+RUN apk add --no-cache \
         git==2.26.2-r0 \
-        openssl==1.1.1i-r0 \
-        openssh==8.4_p1-r2 \
+        openssh==8.3_p1-r1 \
         tar==1.32-r1 \
         gzip==1.10-r0 \
         ca-certificates==20191127-r4 \
