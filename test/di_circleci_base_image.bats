@@ -2,6 +2,8 @@
 
 @test "evaluate installed package versions" {
   run bash -c "docker exec di-circleci-remote-docker-edge apk -v info"
+  [[ "${output}" =~ "libcrypto1.1-1.1.1i-r0" ]]
+  [[ "${output}" =~ "libssl1.1-1.1.1i-r0" ]]
   [[ "${output}" =~ "git-2.26.2-r0" ]]
   [[ "${output}" =~ "openssh-8.3_p1-r1" ]]
   [[ "${output}" =~ "tar-1.32-r1" ]]
