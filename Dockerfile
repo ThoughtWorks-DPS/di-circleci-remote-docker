@@ -3,8 +3,11 @@ FROM alpine:3.12.2
 LABEL maintainer=<nic.cheneweth@thoughtworks.com>
 
 # packages required for use as a circleci remote-docker primary container
+# libcrypto1.1, libssk1.1 require express version setting until 1.1.1i-r0 security patch merged
 # hadolint ignore=DL3003
 RUN apk add --no-cache \
+        libcrypto1.1==1.1.1i-r0 \
+        libssl1.1==1.1.1i-r0 \
         git==2.26.2-r0 \
         openssh==8.3_p1-r1 \
         tar==1.32-r1 \
