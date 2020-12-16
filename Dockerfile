@@ -3,8 +3,8 @@ FROM alpine:3.12.2
 LABEL maintainer=<nic.cheneweth@thoughtworks.com>
 
 # packages required for use as a circleci remote-docker primary container
-# hadolint ignore=DL3003,DL3004
-RUN sudo sh -c "echo 'http://dl-cdn.alpinelinux.org/alpine/edge/main' >> /etc/apk/repositories" && \
+# hadolint ignore=DL3003
+RUN echo 'http://dl-cdn.alpinelinux.org/alpine/edge/main' >> /etc/apk/repositories && \
     apk add --no-cache \
         git==2.26.2-r0 \
         openssh==8.4_p1-r2 \
