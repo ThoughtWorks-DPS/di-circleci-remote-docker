@@ -2,30 +2,30 @@
 
 @test "evaluate installed package versions" {
   run bash -c "docker exec di-circleci-remote-docker-edge apk -v info"
-  [[ "${output}" =~ "libcrypto1.1-1.1.1i-r0" ]]
-  [[ "${output}" =~ "libssl1.1-1.1.1i-r0" ]]
-  [[ "${output}" =~ "git-2.26.2-r0" ]]
-  [[ "${output}" =~ "openssh-8.3_p1-r1" ]]
-  [[ "${output}" =~ "tar-1.32-r1" ]]
-  [[ "${output}" =~ "gzip-1.10-r0" ]]
-  [[ "${output}" =~ "ca-certificates-20191127-r4" ]]
-  [[ "${output}" =~ "sudo-1.9.0-r0" ]]
-  [[ "${output}" =~ "libintl-0.20.2-r0" ]]
+  # [[ "${output}" =~ "libcrypto1.1-1.1.1i-r0" ]]
+  # [[ "${output}" =~ "libssl1.1-1.1.1i-r0" ]]
+  [[ "${output}" =~ "git-2.30.0-r0" ]]
+  [[ "${output}" =~ "openssh-8.4_p1-r2" ]]
+  [[ "${output}" =~ "tar-1.33-r1" ]]
+  [[ "${output}" =~ "gzip-1.10-r1" ]]
+  [[ "${output}" =~ "ca-certificates-20191127-r5" ]]
+  [[ "${output}" =~ "sudo-1.9.5p1-r0" ]]
+  [[ "${output}" =~ "libintl-0.20.2-r2" ]]
 }
 
 @test "git version" {
   run bash -c "docker exec di-circleci-remote-docker-edge git --version"
-  [[ "${output}" =~ "2.26" ]]
+  [[ "${output}" =~ "2.30" ]]
 }
 
 @test "openssh version" {
   run bash -c "docker exec di-circleci-remote-docker-edge ssh -V"
-  [[ "${output}" =~ "8.3" ]]
+  [[ "${output}" =~ "8.4" ]]
 }
 
 @test "tar version" {
   run bash -c "docker exec di-circleci-remote-docker-edge tar --version"
-  [[ "${output}" =~ "1.32" ]]
+  [[ "${output}" =~ "1.33" ]]
 }
 
 @test "gzip version" {
