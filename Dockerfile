@@ -1,4 +1,4 @@
-FROM alpine:3.12.3
+FROM alpine:3.13.0
 
 LABEL maintainer=<nic.cheneweth@thoughtworks.com>
 
@@ -6,22 +6,20 @@ LABEL maintainer=<nic.cheneweth@thoughtworks.com>
 # libcrypto1.1, libssk1.1 require express version setting until 1.1.1i-r0 security patch merged
 # hadolint ignore=DL3003
 RUN apk add --no-cache \
-        libcrypto1.1==1.1.1i-r0 \
-        libssl1.1==1.1.1i-r0 \
-        git==2.26.2-r0 \
-        openssh==8.3_p1-r1 \
-        tar==1.32-r1 \
-        gzip==1.10-r0 \
-        ca-certificates==20191127-r4 \
-        sudo==1.9.0-r0 \
-        libintl==0.20.2-r0 && \
+        git==2.30.0-r0 \
+        openssh==8.4_p1-r2 \
+        tar==1.33-r1 \
+        gzip==1.10-r1 \
+        ca-certificates==20191127-r5 \
+        sudo==1.9.5p1-r0 \
+        libintl==0.20.2-r2 && \
         apk --no-cache add --virtual build-dependencies \
-        cmake==3.17.2-r0 \
+        cmake==3.18.4-r1 \
         make==4.3-r0 \
-        musl-dev==1.1.24-r10 \
-        musl-utils==1.1.24-r10 \
-        gcc==9.3.0-r2 \
-        gettext-dev==0.20.2-r0 && \
+        musl-dev==1.2.2-r0 \
+        musl-utils==1.2.2-r0 \
+        gcc==10.2.1_pre1-r3 \
+        gettext-dev==0.20.2-r2 && \
     wget https://gitlab.com/rilian-la-te/musl-locales/-/archive/master/musl-locales-master.zip && \
     unzip musl-locales-master.zip && cd musl-locales-master && \
     cmake -DLOCALE_PROFILE=OFF -D CMAKE_INSTALL_PREFIX:PATH=/usr . && \
@@ -48,3 +46,6 @@ USER circleci
 WORKDIR /home/circleci/project
 
 HEALTHCHECK NONE
+
+        # libcrypto1.1==1.1.1i-r0 \
+        # libssl1.1==1.1.1i-r0 \
