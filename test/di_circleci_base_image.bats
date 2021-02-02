@@ -9,7 +9,7 @@
   [[ "${output}" =~ "tar-1.33-r1" ]]
   [[ "${output}" =~ "gzip-1.10-r1" ]]
   [[ "${output}" =~ "ca-certificates-20191127-r5" ]]
-  [[ "${output}" =~ "sudo-1.9.5p1-r0" ]]
+  [[ "${output}" =~ "sudo-1.9.5p2-r0" ]]
   [[ "${output}" =~ "libintl-0.20.2-r2" ]]
 }
 

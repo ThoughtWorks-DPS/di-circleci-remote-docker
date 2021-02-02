@@ -1,9 +1,8 @@
-FROM alpine:3.13.0
+FROM alpine:3.13.1
 
 LABEL maintainer=<nic.cheneweth@thoughtworks.com>
 
 # packages required for use as a circleci remote-docker primary container
-# libcrypto1.1, libssk1.1 require express version setting until 1.1.1i-r0 security patch merged
 # hadolint ignore=DL3003
 RUN apk add --no-cache \
         git==2.30.0-r0 \
@@ -11,7 +10,7 @@ RUN apk add --no-cache \
         tar==1.33-r1 \
         gzip==1.10-r1 \
         ca-certificates==20191127-r5 \
-        sudo==1.9.5p1-r0 \
+        sudo==1.9.5p2-r0 \
         libintl==0.20.2-r2 && \
         apk --no-cache add --virtual build-dependencies \
         cmake==3.18.4-r1 \
@@ -46,6 +45,3 @@ USER circleci
 WORKDIR /home/circleci/project
 
 HEALTHCHECK NONE
-
-        # libcrypto1.1==1.1.1i-r0 \
-        # libssl1.1==1.1.1i-r0 \
