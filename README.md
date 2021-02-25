@@ -63,6 +63,13 @@ This image is based on the Alpine Linux distribution and contains the minimum re
 - libintl (required by musl-locales)
 - musl-locales (for alpine multi-language support)
 
+**Medium severity vulnerability found in musl < 1.2.2_pre0-r0**
+Description: Out-of-bounds Write
+Info: https://snyk.io/vuln/SNYK-ALPINE313-MUSL-1067865
+
+The stated fix-package is not available. Musl 1.2.2-r1 still fails the tests.
+
+
 ### Tagging Scheme
 
 This image has the following tagging scheme:
