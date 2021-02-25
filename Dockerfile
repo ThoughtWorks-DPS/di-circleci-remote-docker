@@ -1,4 +1,4 @@
-FROM alpine:3.13.0
+FROM alpine:3.13.2
 
 LABEL maintainer=<nic.cheneweth@thoughtworks.com>
 
@@ -15,6 +15,7 @@ RUN apk add --no-cache \
         apk --no-cache add --virtual build-dependencies \
         cmake==3.18.4-r1 \
         make==4.3-r0 \
+        musl==1.2.2-r1 \
         musl-dev==1.2.2-r1 \
         musl-utils==1.2.2-r1 \
         gcc==10.2.1_pre1-r3 \
