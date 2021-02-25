@@ -27,6 +27,7 @@ RUN apk add --no-cache \
     cd .. && rm -r musl-locales-master && \
     apk del build-dependencies
 
+# hadolint ignore=DL3044
 ENV PATH=/home/circleci/bin:/home/circleci/.local/bin:$PATH \
     MUSL_LOCPATH=/usr/share/i18n/locales/musl \
     LANG="C.UTF-8" \

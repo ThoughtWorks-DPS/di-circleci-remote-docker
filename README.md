@@ -15,7 +15,7 @@ With some inspiration from the CircleCI convenience images, `twdps/di-circleci-r
 
 This image contains the minimum packages required to operate a build on CircleCI, along with a `USER circleci` definition and multi-language support.  
 
-_difference with cimg libraries._ Enterprise settings often require specific security and configuration testing. The twdps series of convenience images is based on Alpine linux and includes common sdlc practices including benchmark testing.  
+_difference with cimg libraries._ Enterprise settings often require specific security and configuration testing. The twdps series of convenience images is based on Alpine linux and includes common sdlc practices including CIS-benchmark testing.  
 
 **Other images in this series**  
 
@@ -75,7 +75,7 @@ twdps/di-circleci-remote-docker:<YYYY.MM>
 
 `edge` - points to the latest version of the Base image. Built from the `HEAD` of the `master` branch. Intended to be used as a testing version of the image with the most recent changes however not guaranteed to be all that stable and not recommended for production software.  
 
-`stable` - points to the latest, production ready base image. For projects that want a decent level of stability while recieving all software updates and recommended security patches. Security patches can sometimes include pre-release or release candidate versions of packages. This is similar to using the `:latest` tag and is not a generally recommended practice. Pin the `FROM` reference to a specific release and adopt new releases as part of your ci process. Typically updated once a month.  
+`stable` - points to the latest, production ready base image. For projects that want a decent level of stability while recieving all software updates and recommended security patches. Security patches can sometimes include pre-release or release candidate versions of packages. Consider this similar to using the `:latest` tag and is not a generally recommended practice. Pin the `FROM` reference to a specific release and adopt new releases as part of your ci process. Typically updated once a month.  
 
 `<YYYY.MM>` - Release version of the image, referred to by the 4 digit year, dot, and a 2 digit month. For example `2020.05` would be the monthly tag from May 2020. This is the recommended version for use in an executor Dockerfile.  
 
