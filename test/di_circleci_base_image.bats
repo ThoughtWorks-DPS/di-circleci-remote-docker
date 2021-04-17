@@ -5,7 +5,7 @@
   # [[ "${output}" =~ "libcrypto1.1-1.1.1i-r0" ]]
   # [[ "${output}" =~ "libssl1.1-1.1.1i-r0" ]]
   [[ "${output}" =~ "git-2.30.2-r0" ]]
-  [[ "${output}" =~ "openssh-8.4_p1-r2" ]]
+  [[ "${output}" =~ "openssh-8.4_p1-r3" ]]
   [[ "${output}" =~ "tar-1.34-r0" ]]
   [[ "${output}" =~ "gzip-1.10-r1" ]]
   [[ "${output}" =~ "ca-certificates-20191127-r5" ]]
@@ -25,7 +25,7 @@
 
 @test "tar version" {
   run bash -c "docker exec di-circleci-remote-docker-edge tar --version"
-  [[ "${output}" =~ "1.33" ]]
+  [[ "${output}" =~ "1.34" ]]
 }
 
 @test "gzip version" {
