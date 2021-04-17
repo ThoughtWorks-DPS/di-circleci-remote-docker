@@ -4,9 +4,9 @@
   run bash -c "docker exec di-circleci-remote-docker-edge apk -v info"
   # [[ "${output}" =~ "libcrypto1.1-1.1.1i-r0" ]]
   # [[ "${output}" =~ "libssl1.1-1.1.1i-r0" ]]
-  [[ "${output}" =~ "git-2.30.1-r0" ]]
+  [[ "${output}" =~ "git-2.30.2-r0" ]]
   [[ "${output}" =~ "openssh-8.4_p1-r2" ]]
-  [[ "${output}" =~ "tar-1.33-r1" ]]
+  [[ "${output}" =~ "tar-1.34-r0" ]]
   [[ "${output}" =~ "gzip-1.10-r1" ]]
   [[ "${output}" =~ "ca-certificates-20191127-r5" ]]
   [[ "${output}" =~ "sudo-1.9.5p2-r0" ]]
