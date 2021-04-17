@@ -20,7 +20,7 @@ RUN apk add --no-cache \
         musl-utils==1.2.2-r0 \
         gcc==10.2.1_pre1-r3 \
         gettext-dev==0.20.2-r2 && \
-    wget --progress=dot:giga https://gitlab.com/rilian-la-te/musl-locales/-/archive/master/musl-locales-master.zip && \
+    wget -q https://gitlab.com/rilian-la-te/musl-locales/-/archive/master/musl-locales-master.zip && \
     unzip musl-locales-master.zip && cd musl-locales-master && \
     cmake -DLOCALE_PROFILE=OFF -D CMAKE_INSTALL_PREFIX:PATH=/usr . && \
     make && make install && \
