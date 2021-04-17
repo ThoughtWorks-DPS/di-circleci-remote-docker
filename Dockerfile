@@ -6,8 +6,8 @@ LABEL maintainer=<nic.cheneweth@thoughtworks.com>
 # hadolint ignore=DL3003
 RUN apk add --no-cache \
         git==2.30.2-r0 \
-        openssh==8.4_p1-r2 \
-        tar==1.33-r1 \
+        openssh==8.4_p1-r3 \
+        tar==1.34-r0 \
         gzip==1.10-r1 \
         ca-certificates==20191127-r5 \
         sudo==1.9.5p2-r0 \
