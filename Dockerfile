@@ -5,7 +5,7 @@ LABEL maintainer=<nic.cheneweth@thoughtworks.com>
 # packages required for use as a circleci remote-docker primary container
 # hadolint ignore=DL3003
 RUN apk add --no-cache \
-        git==2.30.1-r0 \
+        git==2.30.2-r0 \
         openssh==8.4_p1-r2 \
         tar==1.33-r1 \
         gzip==1.10-r1 \
@@ -20,7 +20,7 @@ RUN apk add --no-cache \
         musl-utils==1.2.2-r0 \
         gcc==10.2.1_pre1-r3 \
         gettext-dev==0.20.2-r2 && \
-    wget https://gitlab.com/rilian-la-te/musl-locales/-/archive/master/musl-locales-master.zip && \
+    wget --progress=dot:giga https://gitlab.com/rilian-la-te/musl-locales/-/archive/master/musl-locales-master.zip && \
     unzip musl-locales-master.zip && cd musl-locales-master && \
     cmake -DLOCALE_PROFILE=OFF -D CMAKE_INSTALL_PREFIX:PATH=/usr . && \
     make && make install && \
