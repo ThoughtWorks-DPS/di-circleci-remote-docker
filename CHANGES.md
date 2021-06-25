@@ -10,5 +10,3 @@ FROM alpine:3.14.0
 | gzip            | 1.10-r1     |
 | ca-certificates | 20191127-r5 |
 | sudo            | 1.9.7_p1-r1 |
-| libintl         | 0.21-r0     |
-| musl-locales    | master      |

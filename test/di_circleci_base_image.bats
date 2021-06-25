@@ -10,7 +10,6 @@
   [[ "${output}" =~ "gzip-1.10-r1" ]]
   [[ "${output}" =~ "ca-certificates-20191127-r5" ]]
   [[ "${output}" =~ "sudo-1.9.7_p1-r1" ]]
-  [[ "${output}" =~ "libintl-0.21-r0" ]]
 }
 
 @test "git version" {
@@ -41,19 +40,6 @@
 @test "sudo version" {
   run bash -c "docker exec di-circleci-remote-docker-edge sudo --version"
   [[ "${output}" =~ "1.9" ]]
-}
-
-@test "confirm localization one" {
-  run bash -c "docker exec di-circleci-remote-docker-edge locale -a"
-  [[ "${output}" =~ "C.UTF-8" ]]
-  [[ "${output}" =~ "fr_FR.UTF-8" ]]
-  [[ "${output}" =~ "de_CH.UTF-8" ]]
-}
-
-@test "current localization two" {
-  run bash -c "docker exec di-circleci-remote-docker-edge locale"
-  [[ "${output}" =~ "LANG=C.UTF-8" ]]
-  [[ "${output}" =~ "LC_ALL=en_US.UTF-8" ]]
 }
 
 @test "describe user circleci" {

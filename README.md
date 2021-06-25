@@ -62,11 +62,11 @@ This image is based on the Alpine Linux distribution and contains the minimum re
 - sudo (to support adding and defining a Dockerfile USER)
 _See CHANGES.md for current versions_
 
-**Medium severity vulnerability found in musl < 1.2.2_pre0-r0**
-Description: Out-of-bounds Write
-Info: https://snyk.io/vuln/SNYK-ALPINE313-MUSL-1067865
+**vulnerability found in sudo < 1.9.5p2-r0**
+Description: Off-by-one Error
+Info: https://snyk.io/vuln/SNYK-ALPINE314-SUDO-1308042
 
-The stated fix-package is not available. Musl 1.2.2-r1 still fails the tests.
+Snyk began reporting this error with the alpine 3.14 upgrade, even though sudo is at 1.9.7
 
 _Note. Earlier versions of this executor included multi-language libraries. After careful evaluation of the value provided, this has been removed starting with version 2021.06_
 
