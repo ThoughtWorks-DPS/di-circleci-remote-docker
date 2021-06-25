@@ -13,13 +13,13 @@ RUN apk add --no-cache \
         sudo==1.9.7_p1-r1 \
         libintl==0.21-r0 && \
         apk --no-cache add --virtual build-dependencies \
-        cmake==3.18.4-r1 \
+        cmake==3.20.3-r0 \
         make==4.3-r0 \
-        musl==1.2.2-r0 \
-        musl-dev==1.2.2-r0 \
+        musl==1.2.2-r3 \
+        musl-dev==1.2.2-r3 \
         musl-utils==1.2.2-r0 \
-        gcc==10.2.1_pre1-r3 \
-        gettext-dev==0.20.2-r2 && \
+        gcc==10.3.1_git20210424-r2 \
+        gettext-dev==0.21-r0 && \
     wget -q https://gitlab.com/rilian-la-te/musl-locales/-/archive/master/musl-locales-master.zip && \
     unzip musl-locales-master.zip && cd musl-locales-master && \
     cmake -DLOCALE_PROFILE=OFF -D CMAKE_INSTALL_PREFIX:PATH=/usr . && \
