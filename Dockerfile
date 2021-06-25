@@ -17,7 +17,7 @@ RUN apk add --no-cache \
         make==4.3-r0 \
         musl==1.2.2-r3 \
         musl-dev==1.2.2-r3 \
-        musl-utils==1.2.2-r0 \
+        musl-utils==1.2.2-r3 \
         gcc==10.3.1_git20210424-r2 \
         gettext-dev==0.21-r0 && \
     wget -q https://gitlab.com/rilian-la-te/musl-locales/-/archive/master/musl-locales-master.zip && \
