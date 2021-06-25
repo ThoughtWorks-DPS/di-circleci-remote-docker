@@ -60,8 +60,6 @@ This image is based on the Alpine Linux distribution and contains the minimum re
 - gzip
 - ca-certificates
 - sudo (to support adding and defining a Dockerfile USER)
-- libintl (required by musl-locales)
-- musl-locales (for alpine multi-language support)
 _See CHANGES.md for current versions_
 
 **Medium severity vulnerability found in musl < 1.2.2_pre0-r0**
@@ -70,6 +68,7 @@ Info: https://snyk.io/vuln/SNYK-ALPINE313-MUSL-1067865
 
 The stated fix-package is not available. Musl 1.2.2-r1 still fails the tests.
 
+_Note. Earlier versions of this executor included multi-language libraries. After careful evaluation of the value provided, this has been removed starting with version 2021.06_
 
 ### Tagging Scheme
 
