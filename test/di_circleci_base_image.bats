@@ -4,23 +4,23 @@
   run bash -c "docker exec di-circleci-remote-docker-edge apk -v info"
   # [[ "${output}" =~ "libcrypto1.1-1.1.1i-r0" ]]
   # [[ "${output}" =~ "libssl1.1-1.1.1i-r0" ]]
-  [[ "${output}" =~ "git-2.30.2-r0" ]]
-  [[ "${output}" =~ "openssh-8.4_p1-r3" ]]
+  [[ "${output}" =~ "git-2.32.0-r0" ]]
+  [[ "${output}" =~ "openssh-8.6_p1-r2" ]]
   [[ "${output}" =~ "tar-1.34-r0" ]]
   [[ "${output}" =~ "gzip-1.10-r1" ]]
   [[ "${output}" =~ "ca-certificates-20191127-r5" ]]
-  [[ "${output}" =~ "sudo-1.9.5p2-r0" ]]
-  [[ "${output}" =~ "libintl-0.20.2-r2" ]]
+  [[ "${output}" =~ "sudo-1.9.7_p1-r1" ]]
+  [[ "${output}" =~ "libintl-0.21-r0" ]]
 }
 
 @test "git version" {
   run bash -c "docker exec di-circleci-remote-docker-edge git --version"
-  [[ "${output}" =~ "2.30" ]]
+  [[ "${output}" =~ "2.32" ]]
 }
 
 @test "openssh version" {
   run bash -c "docker exec di-circleci-remote-docker-edge ssh -V"
-  [[ "${output}" =~ "8.4" ]]
+  [[ "${output}" =~ "8.6" ]]
 }
 
 @test "tar version" {

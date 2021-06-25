@@ -62,6 +62,7 @@ This image is based on the Alpine Linux distribution and contains the minimum re
 - sudo (to support adding and defining a Dockerfile USER)
 - libintl (required by musl-locales)
 - musl-locales (for alpine multi-language support)
+_See CHANGES.md for current versions_
 
 **Medium severity vulnerability found in musl < 1.2.2_pre0-r0**
 Description: Out-of-bounds Write

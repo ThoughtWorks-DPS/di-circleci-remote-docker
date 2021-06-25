@@ -3,13 +3,13 @@ control 'packages' do
   title 'confirm package installation'
   desc 'confirm all desired packages are installed'
   describe command('apk info -v') do
-    its('stdout') { should include ('git-2.24.3-r0') }
-    its('stdout') { should include ('openssh-8.1_p1-r0') }
-    its('stdout') { should include ('tar-1.32-r1') }
-    its('stdout') { should include ('gzip-1.10-r0') }
-    its('stdout') { should include ('ca-certificates-20191127-r1') }
-    its('stdout') { should include ('sudo-1.8.31p1-r1') }
-    its('stdout') { should include ('libintl-0.20.1-r2') }
+    its('stdout') { should include ('git-2.32.0-r0') }
+    its('stdout') { should include ('openssh-8.6_p1-r2') }
+    its('stdout') { should include ('tar-1.34-r0') }
+    its('stdout') { should include ('gzip-1.10-r1') }
+    its('stdout') { should include ('ca-certificates-20191127-r5') }
+    its('stdout') { should include ('sudo-1.9.7_p1-r1') }
+    its('stdout') { should include ('libintl-0.21-r0') }
   end
 end
 
@@ -18,7 +18,7 @@ control 'git version' do
   title 'confirm git version installed'
   desc 'confirm version reported by git matches the desired version'
   describe command('git --version') do
-    its('stdout') { should include ('2.24') }
+    its('stdout') { should include ('2.32') }
   end
 end
 
@@ -27,7 +27,7 @@ control 'openssh version' do
   title 'confirm openssh version installed'
   desc 'confirm version reported by openssh matches the desired version'
   describe command('ssh -V') do
-    its('stderr') { should include ('8.2') }
+    its('stderr') { should include ('8.6') }
   end
 end
 
@@ -36,7 +36,7 @@ control 'tar version' do
   title 'confirm tar version installed'
   desc 'confirm version reported by tar matches the desired version'
   describe command('tar --version') do
-    its('stdout') { should include ('1.32') }
+    its('stdout') { should include ('1.34') }
   end
 end
 
@@ -63,7 +63,7 @@ control 'sudo version' do
   title 'confirm sudo version installed'
   desc 'confirm version reported by sudo matches the desired version'
   describe command('sudo --version') do
-    its('stdout') { should include ('1.8') }
+    its('stdout') { should include ('1.9') }
   end
 end
 

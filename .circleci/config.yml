@@ -26,7 +26,7 @@ workflows:
           context: twdps-di
           image: twdps/di-circleci-remote-docker
           tag: edge
-          docker-cve-scan: false
+          docker-cve-scan: true
           cis-docker-image-scan: true
           bats-test: true
           entry-point: /bin/ash

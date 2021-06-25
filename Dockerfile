@@ -5,13 +5,13 @@ LABEL maintainer=<nic.cheneweth@thoughtworks.com>
 # packages required for use as a circleci remote-docker primary container
 # hadolint ignore=DL3003
 RUN apk add --no-cache \
-        git==2.30.2-r0 \
-        openssh==8.4_p1-r3 \
+        git==2.32.0-r0 \
+        openssh==8.6_p1-r2 \
         tar==1.34-r0 \
         gzip==1.10-r1 \
         ca-certificates==20191127-r5 \
-        sudo==1.9.5p2-r0 \
-        libintl==0.20.2-r2 && \
+        sudo==1.9.7_p1-r1 \
+        libintl==0.21-r0 && \
         apk --no-cache add --virtual build-dependencies \
         cmake==3.18.4-r1 \
         make==4.3-r0 \
