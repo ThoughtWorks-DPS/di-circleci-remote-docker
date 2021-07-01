@@ -1,6 +1,8 @@
 .circleci/
 img/
 .pre-commit-config.yaml
-Dockerfile.unpinned
+Dockerfile.alpine.unpinned
+Dockerfile.slim.unpinned
 requirements-local.txt
 testlocal.sh
+secrethub.env

@@ -2,7 +2,7 @@
 version: 2.1
 
 orbs:
-  executor-tools: feedyard/executor-tools@2.4.0
+  executor-tools: feedyard/executor-tools@dev:5cc97ad
 
 on-push-master: &on-push-master
   branches:
@@ -18,21 +18,45 @@ on-tag-master: &on-tag-master
 
 workflows:
   version: 2
-  di-circleci-remote-docker-image-pipeline:
+  di-circleci-remote-docker-image-alpine-pipeline:
     jobs:
       - executor-tools/dev-release:
           shell: secrethub run -- /bin/sh -eo pipefail
-          name: "dev-build"
+          name: alpine-dev-build
           context: twdps-di
+          dockerfile: Dockerfile.alpine
           image: twdps/di-circleci-remote-docker
-          tag: edge
-          docker-cve-scan: false
+          tag: alpine-edge
           cis-docker-image-scan: true
           bats-test: true
           entry-point: /bin/ash
           container-name: di-circleci-remote-docker-edge
           filters: *on-push-master
-          
+
+      - executor-tools/publish:
+          shell: secrethub run -- /bin/sh -eo pipefail
+          name: alpine-release
+          context: twdps-di
+          pull-tag: alpine-edge
+          image: twdps/di-circleci-remote-docker
+          release-tag: alpine-stable
+          filters: *on-tag-master
+
+  di-circleci-remote-docker-image-slim-pipeline:
+    jobs:
+      - executor-tools/dev-release:
+          shell: secrethub run -- /bin/sh -eo pipefail
+          name: slim-dev-build
+          context: twdps-di
+          dockerfile: Dockerfile.slim
+          image: twdps/di-circleci-remote-docker
+          tag: slim-edge
+          cis-docker-image-scan: true
+          bats-test: true
+          entry-point: /bin/bash
+          container-name: di-circleci-remote-docker-edge
+          filters: *on-push-master
+
       - executor-tools/publish:
           shell: secrethub run -- /bin/sh -eo pipefail
           name: Release
@@ -40,7 +64,7 @@ workflows:
           pull-tag: edge
           image: twdps/di-circleci-remote-docker
           release-tag: stable
-          filters: *on-tag-master        
+          filters: *on-tag-master
 
   # NOTE: currently circleci does not support scheduled builds that use restricted contexts
   # builds nightly from .unpinned Dockerfile in order to test the latest base image and installed packages
@@ -59,7 +83,7 @@ workflows:
           context: twdps-di
           image: twdps/di-circleci-remote-docker
           tag: nightly
-          dockerfile: Dockerfile.unpinned
+          dockerfile: Dockerfile.alpine.unpinned
           docker-cve-scan: false
           cis-docker-image-scan: true
           bats-test: true

@@ -1,0 +1,30 @@
+FROM debian:buster-slim
+
+LABEL maintainer=<nic.cheneweth@thoughtworks.com>
+
+ENV USER=circleci
+
+# packages required for use as a circleci remote-docker primary container
+RUN apt-get update && \
+    apt-get install --no-install-recommends -y \
+            git \
+            openssh-server \
+            tar \
+            gzip \
+            ca-certificates \
+            sudo && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* && \
+    groupadd -g 3434 $USER && useradd -u 3434 -g $USER -G sudo -m -s /bin/bash $USER && \
+    sed -i /etc/sudoers -re 's/^%sudo.*/%sudo ALL=(ALL:ALL) NOPASSWD: ALL/g' && \
+    sed -i /etc/sudoers -re 's/^root.*/root ALL=(ALL:ALL) NOPASSWD: ALL/g' && \
+    sed -i /etc/sudoers -re 's/^#includedir.*/## **Removed the include directive** ##"/g' && \
+    echo "${USER} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
+    mkdir -p /home/circleci/project && \
+    chown -R $USER:$USER /home/circleci/project
+
+USER circleci
+
+WORKDIR /home/circleci/project
+
+HEALTHCHECK NONE
