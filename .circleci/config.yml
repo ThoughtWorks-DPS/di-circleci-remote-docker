@@ -68,24 +68,24 @@ workflows:
 
   # NOTE: currently circleci does not support scheduled builds that use restricted contexts
   # builds nightly from .unpinned Dockerfile in order to test the latest base image and installed packages
-  di-circleci-infra-image-nightly-build:
-    triggers:
-      - schedule:
-          cron: "0 0 * * 0"
-          filters:
-            branches:
-              only:
-                - master
-    jobs:
-      - executor-tools/dev-release:
-          shell: secrethub run -- /bin/sh -eo pipefail
-          name: "nightly-build"
-          context: twdps-di
-          image: twdps/di-circleci-remote-docker
-          tag: nightly
-          dockerfile: Dockerfile.alpine.unpinned
-          docker-cve-scan: false
-          cis-docker-image-scan: true
-          bats-test: true
-          entry-point: /bin/ash
-          container-name: di-circleci-remote-docker-edge
+  # di-circleci-infra-image-nightly-build:
+  #   triggers:
+  #     - schedule:
+  #         cron: "0 0 * * 0"
+  #         filters:
+  #           branches:
+  #             only:
+  #               - master
+  #   jobs:
+  #     - executor-tools/dev-release:
+  #         shell: secrethub run -- /bin/sh -eo pipefail
+  #         name: "nightly-build"
+  #         context: twdps-di
+  #         image: twdps/di-circleci-remote-docker
+  #         tag: nightly
+  #         dockerfile: Dockerfile.alpine.unpinned
+  #         docker-cve-scan: false
+  #         cis-docker-image-scan: true
+  #         bats-test: true
+  #         entry-point: /bin/ash
+  #         container-name: di-circleci-remote-docker-edge
