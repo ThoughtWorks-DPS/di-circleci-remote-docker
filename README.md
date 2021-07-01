@@ -1,10 +1,14 @@
 <div align="center">
 	<p>
+		<img alt="Thoughtworks Logo" src="https://raw.githubusercontent.com/ThoughtWorks-DPS/static/master/thoughtworks_flamingo_wave.png?sanitize=true" width=200 />
+    <br />
+		<img alt="DPS Title" src="https://raw.githubusercontent.com/ThoughtWorks-DPS/static/master/dps_lab_title.png?sanitize=true" width=350/>
+		<h3>DPS Convenience Images</h3>
 		<img alt="CircleCI Logo" src="https://raw.githubusercontent.com/ThoughtWorks-DPS/di-circleci-remote-docker/master/img/circle-circleci.svg?sanitize=true" width="75" />
 		<img alt="Docker Logo" src="https://raw.githubusercontent.com/ThoughtWorks-DPS/di-circleci-remote-docker/master/img/circle-docker.svg?sanitize=true" width="75" />
 		<img alt="Ubuntu Logo" src="https://raw.githubusercontent.com/ThoughtWorks-DPS/di-circleci-remote-docker/master/img/alpine.png?sanitize=true" width="75" />
 	</p>
-  <h3>ThoughtWorks DPS Convenience Images</h3>
+  
   <h1>twdps/di-circleci-remote-docker</h1>
   <a href="https://app.circleci.com/pipelines/github/ThoughtWorks-DPS/di-circleci-remote-docker"><img src="https://circleci.com/gh/ThoughtWorks-DPS/di-circleci-remote-docker.svg?style=shield"></a> <a href="https://hub.docker.com/repository/docker/twdps/di-circleci-remote-docker"><img src="https://img.shields.io/docker/v/twdps/di-circleci-remote-docker?sort=semver"></a> <a href="https://hub.docker.com/repository/docker/twdps/di-circleci-remote-docker"><img src="https://img.shields.io/docker/image-size/twdps/di-circleci-remote-docker/2020.05"></a> <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/github/license/ThoughtWorks-DPS/di-circleci-remote-docker"></a>
   <h5>A Continous Integration focused Alpine Docker image built to run on CircleCI</h5>
