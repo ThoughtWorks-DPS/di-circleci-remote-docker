@@ -29,6 +29,7 @@ workflows:
           tag: alpine-edge
           cis-docker-image-scan: true
           bats-test: true
+          tests-path: test/di_circleci_remote_docker_alpine.bats
           entry-point: /bin/ash
           container-name: di-circleci-remote-docker-edge
           filters: *on-push-master
@@ -51,8 +52,8 @@ workflows:
           dockerfile: Dockerfile.slim
           image: twdps/di-circleci-remote-docker
           tag: slim-edge
-          cis-docker-image-scan: true
           bats-test: true
+          tests-path: test/di_circleci_remote_docker_slim.bats
           entry-point: /bin/bash
           container-name: di-circleci-remote-docker-edge
           filters: *on-push-master

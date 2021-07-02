@@ -4,6 +4,7 @@ cispolicyconfig:
   approved_base_image_not_required: false
   approved_base_images:
     - alpine
+    - slim
   images_not_treated_as_immutable: false
   only_necessary_packages_allowed: true
   healthcheck_required: false
