@@ -11,7 +11,7 @@
 </div>
 <br />
 
-With some inspiration from the CircleCI convenience images, `twdps/di-circleci-remote-docker` has both Alpine and buster-slim variants created with self-hosted runners in mind. As the name suggests, this image is designed to serve as a starter image for building a use-tailored CircleCI [remote docker executor](https://circleci.com/docs/2.0/custom-images/#section=configuration).  
+With some inspiration from the CircleCI convenience images, `twdps/di-circleci-remote-docker` has both alpine and buster-slim variants created with self-hosted runners in mind. As the name suggests, this image is designed to serve as a starter image for building a use-tailored CircleCI [remote docker executor](https://circleci.com/docs/2.0/custom-images/#section=configuration).  
 
 This image contains the minimum packages required to operate a build on CircleCI, along with a `USER circleci` definition since most self-hosted environments will have privileged execution limitations.  
 
