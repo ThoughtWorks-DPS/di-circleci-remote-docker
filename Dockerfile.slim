@@ -9,4 +9,5 @@ RUN apt-get update && \
             openssh-server=1:7.9p1-10+deb10u2 \
             tar=1.30+dfsg-6 \
             gzip=1.9-3 \
-            ca-certificates=20200601~deb10u2
+            ca-certificates=20200601~deb10u2 && \
+    rm -rf /var/lib/apt/lists/*
