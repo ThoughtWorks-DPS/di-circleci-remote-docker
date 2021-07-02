@@ -1,6 +1,6 @@
 cispolicyconfig:
   level_2_benchmark: false
-  run_as_user_required: true
+  run_as_user_required: false
   approved_base_image_not_required: false
   approved_base_images:
     - alpine
