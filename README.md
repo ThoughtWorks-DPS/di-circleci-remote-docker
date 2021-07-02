@@ -15,7 +15,7 @@ With inspiration from the CircleCI convenience images, `twdps/di-circleci-remote
 
 This image contains the minimum packages required to operate a build on CircleCI.  
 
-_difference with cimg libraries._ Enterprise settings often require specific security and configuration testing. The twdps series of convenience images includes common sdlc security practices, including CIS-benchmark testing.  
+_difference with cimg libraries._ Enterprise settings often require specific security and configuration testing. The twdps series of convenience images includes common sdlc security practices, including CIS-benchmark testing. The Alpine image will generally not have any cve issues.  
 
 **Other images in this series**  
 
@@ -62,6 +62,8 @@ This image is based on the Alpine Linux distribution and contains the minimum re
 _See CHANGES.md for current versions_
 
 _Note. Earlier versions of this executor included sudo, multi-language libraries, and defined USER=circleci. This functionality has been moved to twdps/di-circleci-base-image starting with 2021.07_  
+
+_Note. Multiple cve results in scan of slim image. See CHANGES.md for details._
 
 ### Tagging Scheme
 

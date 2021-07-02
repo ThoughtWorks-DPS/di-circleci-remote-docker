@@ -55,8 +55,6 @@ workflows:
           dockerfile: Dockerfile.slim
           image: twdps/di-circleci-remote-docker
           tag: slim-edge
-          docker-cve-scan: true
-          snyk-organization: twdps
           bats-test: true
           test-path: test/di_circleci_remote_docker_slim.bats
           entry-point: /bin/bash
