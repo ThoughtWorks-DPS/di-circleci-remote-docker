@@ -13,9 +13,9 @@
 
 With some inspiration from the CircleCI convenience images, `twdps/di-circleci-remote-docker` has both alpine and buster-slim variants created with self-hosted runners in mind. As the name suggests, this image is designed to serve as a starter image for building a use-tailored CircleCI [remote docker executor](https://circleci.com/docs/2.0/custom-images/#section=configuration).  
 
-This image contains the minimum packages required to operate a build on CircleCI, along with a `USER circleci` definition since most self-hosted environments will have privileged execution limitations.  
+This image contains the minimum packages required to operate a build on CircleCI, along with a `USER circleci` definition since many self-hosted environments will have privileged execution limitations.  
 
-_difference with cimg libraries._ Enterprise settings often require specific security and configuration testing. The twdps series of convenience images includes common sdlc security practices including CIS-benchmark testing.  
+_difference with cimg libraries._ Enterprise settings often require specific security and configuration testing. The twdps series of convenience images includes common sdlc security practices, including CIS-benchmark testing.  
 
 **Other images in this series**  
 
