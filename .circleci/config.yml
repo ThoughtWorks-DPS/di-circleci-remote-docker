@@ -39,6 +39,7 @@ workflows:
           name: alpine-release
           context: twdps-di
           pull-tag: alpine-edge
+          tag-annotation: alpine-
           image: twdps/di-circleci-remote-docker
           release-tag: alpine-stable
           filters: *on-tag-master
@@ -63,6 +64,7 @@ workflows:
           name: Release
           context: twdps-di
           pull-tag: slim-edge
+          tag-annotation: slim-
           image: twdps/di-circleci-remote-docker
           release-tag: slim-stable
           filters: *on-tag-master
