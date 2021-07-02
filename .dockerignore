@@ -1,8 +1,6 @@
 .circleci/
-img/
 .pre-commit-config.yaml
 Dockerfile.alpine.unpinned
 Dockerfile.slim.unpinned
-requirements-local.txt
 testlocal.sh
 secrethub.env

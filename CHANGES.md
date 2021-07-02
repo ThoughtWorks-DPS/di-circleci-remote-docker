@@ -1,4 +1,4 @@
-## 06-25-2021 package versions in di-circleci-remote-docker:2021.06
+## 07-02-2021 package versions in di-circleci-remote-docker:2021.07
 
 FROM alpine:3.14.0
 
@@ -9,4 +9,3 @@ FROM alpine:3.14.0
 | tar             | 1.34-r0     |
 | gzip            | 1.10-r1     |
 | ca-certificates | 20191127-r5 |
-| sudo            | 1.9.7_p1-r1 |

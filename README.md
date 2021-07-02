@@ -7,13 +7,13 @@
 	</p>
   <h3>DPS Convenience Images</h3>
   <h1>twdps/di-circleci-remote-docker</h1>
-  <a href="https://app.circleci.com/pipelines/github/ThoughtWorks-DPS/di-circleci-remote-docker"><img src="https://circleci.com/gh/ThoughtWorks-DPS/di-circleci-remote-docker.svg?style=shield"></a> <a href="https://hub.docker.com/repository/docker/twdps/di-circleci-remote-docker"><img src="https://img.shields.io/docker/v/twdps/di-circleci-remote-docker?sort=semver"></a> <a href="https://hub.docker.com/repository/docker/twdps/di-circleci-remote-docker"><img src="https://img.shields.io/docker/image-size/twdps/di-circleci-remote-docker/2020.05"></a> <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/github/license/ThoughtWorks-DPS/di-circleci-remote-docker"></a>
+  <a href="https://app.circleci.com/pipelines/github/ThoughtWorks-DPS/di-circleci-remote-docker"><img src="https://circleci.com/gh/ThoughtWorks-DPS/di-circleci-remote-docker.svg?style=shield"></a> <a href="https://hub.docker.com/repository/docker/twdps/di-circleci-remote-docker"><img src="https://img.shields.io/docker/v/twdps/di-circleci-remote-docker?sort=semver"></a> </a> <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/github/license/ThoughtWorks-DPS/di-circleci-remote-docker"></a>
 </div>
 <br />
 
-With some inspiration from the CircleCI convenience images, `twdps/di-circleci-remote-docker` has both alpine and buster-slim variants created with self-hosted runners in mind. As the name suggests, this image is designed to serve as a starter image for building a use-tailored CircleCI [remote docker executor](https://circleci.com/docs/2.0/custom-images/#section=configuration).  
+With inspiration from the CircleCI convenience images, `twdps/di-circleci-remote-docker` has both alpine and buster-slim variants created with self-hosted runners in mind. As the name suggests, this image is designed to serve as a starter image for building a use-tailored CircleCI [remote docker executor](https://circleci.com/docs/2.0/custom-images/#section=configuration).  
 
-This image contains the minimum packages required to operate a build on CircleCI, along with a `USER circleci` definition since many self-hosted environments will have privileged execution limitations.  
+This image contains the minimum packages required to operate a build on CircleCI.  
 
 _difference with cimg libraries._ Enterprise settings often require specific security and configuration testing. The twdps series of convenience images includes common sdlc security practices, including CIS-benchmark testing.  
 
@@ -59,18 +59,9 @@ This image is based on the Alpine Linux distribution and contains the minimum re
 - tar
 - gzip
 - ca-certificates
-- sudo (to support adding and defining a Dockerfile USER)
 _See CHANGES.md for current versions_
 
-Defining a USER for circleci executors can seem counter-intuitive even when using private runners. The intended use includes dynamically installing packages and running other containers. It is also quite common for enterprises to enforce Dockerfile configuration scanning that requires a USER, nonetheless.  
-
-**vulnerability found in sudo < 1.9.5p2-r0**
-Description: Off-by-one Error
-Info: https://snyk.io/vuln/SNYK-ALPINE314-SUDO-1308042
-
-Snyk began reporting this error with the alpine 3.14 upgrade, even though sudo is at 1.9.7
-
-_Note. Earlier versions of this executor included multi-language libraries. After careful evaluation of the value provided, this has been removed starting with version 2021.06_
+_Note. Earlier versions of this executor included sudo, multi-language libraries, and defined USER=circleci. This functionality has been moved to twdps/di-circleci-base-image starting with 2021.07_  
 
 ### Tagging Scheme
 

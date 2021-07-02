@@ -2,7 +2,7 @@
 version: 2.1
 
 orbs:
-  executor-tools: feedyard/executor-tools@dev:latest
+  executor-tools: feedyard/executor-tools@2.5.0
 
 on-push-master: &on-push-master
   branches:
@@ -53,6 +53,7 @@ workflows:
           dockerfile: Dockerfile.slim
           image: twdps/di-circleci-remote-docker
           tag: slim-edge
+          snyk-organization: twdps
           bats-test: true
           test-path: test/di_circleci_remote_docker_slim.bats
           entry-point: /bin/bash
@@ -61,7 +62,7 @@ workflows:
 
       - executor-tools/publish:
           shell: secrethub run -- /bin/sh -eo pipefail
-          name: Release
+          name: slim-elease
           context: twdps-di
           pull-tag: slim-edge
           tag-annotation: slim-

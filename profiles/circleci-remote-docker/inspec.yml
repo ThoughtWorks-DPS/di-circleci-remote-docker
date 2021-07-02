@@ -1,8 +1,0 @@
----
-name: circleci-remote-docker
-title: validate base image used for remote-docker builds on circleci api 2.0
-summary: Verify packages and docker-engine health
-version: 1.3.0
-maintainer: ncheneweth
-copyright: ncheneweth
-license: Apache-2.0
