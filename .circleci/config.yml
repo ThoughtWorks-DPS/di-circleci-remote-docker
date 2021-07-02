@@ -31,7 +31,7 @@ workflows:
           bats-test: true
           test-path: test/di_circleci_remote_docker_alpine.bats
           entry-point: /bin/ash
-          container-name: di-circleci-remote-docker-edge
+          container-name: di-circleci-remote-docker-alpine-edge
           filters: *on-push-master
 
       - executor-tools/publish:
@@ -55,16 +55,16 @@ workflows:
           bats-test: true
           test-path: test/di_circleci_remote_docker_slim.bats
           entry-point: /bin/bash
-          container-name: di-circleci-remote-docker-edge
+          container-name: di-circleci-remote-docker-slim-edge
           filters: *on-push-master
 
       - executor-tools/publish:
           shell: secrethub run -- /bin/sh -eo pipefail
           name: Release
           context: twdps-di
-          pull-tag: edge
+          pull-tag: slim-edge
           image: twdps/di-circleci-remote-docker
-          release-tag: stable
+          release-tag: slim-stable
           filters: *on-tag-master
 
   # NOTE: currently circleci does not support scheduled builds that use restricted contexts
