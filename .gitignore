@@ -3,4 +3,5 @@ inspec.lock
 .venv
 id_rsa
 id_rsa.pub
-
+.python-version
+Pipfile.lock
