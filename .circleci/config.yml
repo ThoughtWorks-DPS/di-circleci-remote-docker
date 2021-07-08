@@ -48,8 +48,7 @@ workflows:
 
   di-circleci-remote-docker-image-slim-pipeline:
     jobs:
-      - executor-tools/dev-release:
-          shell: secrethub run -- /bin/sh -eo pipefail
+      - executor-tools/machine-executor-dev-release:
           name: slim-dev-build
           context: twdps-di
           dockerfile: Dockerfile.slim
@@ -59,6 +58,12 @@ workflows:
           test-path: test/di_circleci_remote_docker_slim.bats
           entry-point: /bin/bash
           container-name: di-circleci-remote-docker-slim-edge
+          after-checkout:
+            - run:
+                name: inject environment variables
+                command: |
+                  secrethub inject -i secrethub.env -o $BASH_ENV
+                  source $BASH_ENV
           filters: *on-push-master
 
       - executor-tools/publish:
@@ -96,7 +101,6 @@ workflows:
           container-name: di-circleci-remote-docker-alpine-edge
 
       - executor-tools/dev-release:
-          shell: secrethub run -- /bin/sh -eo pipefail
           name: nightly-slim-build
           context: twdps-di
           image: twdps/di-circleci-remote-docker
@@ -106,3 +110,9 @@ workflows:
           test-path: test/di_circleci_remote_docker_slim.bats
           entry-point: /bin/bash
           container-name: di-circleci-remote-docker-slim-edge
+          after-checkout:
+            - run:
+                name: inject environment variables
+                command: |
+                  secrethub inject -i secrethub.env -o $BASH_ENV
+                  source $BASH_ENV
