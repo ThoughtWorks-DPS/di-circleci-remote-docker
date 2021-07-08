@@ -1,4 +1,4 @@
-FROM debian:buster-slim
+FROM debian:bullseye-slim
 
 LABEL maintainer=<nic.cheneweth@thoughtworks.com>
 
@@ -9,4 +9,6 @@ RUN apt-get update && \
             openssh-server \
             tar \
             gzip \
-            ca-certificates
+            ca-certificates && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*

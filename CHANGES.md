@@ -1,3 +1,20 @@
+## 07-02-2021 package versions in di-circleci-remote-docker 2021.07.1
+
+^change
+
+no changes in alpine-2021.07.1
+
+FROM debian:bullseye-20210621-slim
+
+| package         | version           |
+|-----------------|-------------------|
+| git             | 1:2.30.2-1^       |
+| openssh-server  | 1:8.4p1-5^        |
+| tar             | 1.34+dfsg-1^      |
+| gzip            | 1.10-4^           |
+| ca-certificates | 20210119^         |
+
+
 ## 07-02-2021 package versions in di-circleci-remote-docker 2021.07
 
 *changes

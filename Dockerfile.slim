@@ -1,13 +1,14 @@
-FROM debian:buster-20210621-slim
+FROM debian:bullseye-20210621-slim
 
 LABEL maintainer=<nic.cheneweth@thoughtworks.com>
 
 # minimum packages required for use as a circleci remote-docker primary container
 RUN apt-get update && \
     apt-get install --no-install-recommends -y \
-            git=1:2.20.1-2+deb10u3 \
-            openssh-server=1:7.9p1-10+deb10u2 \
-            tar=1.30+dfsg-6 \
-            gzip=1.9-3 \
-            ca-certificates=20200601~deb10u2 && \
+            git=1:2.30.2-1 \
+            openssh-server=1:8.4p1-5 \
+            tar=1.34+dfsg-1 \
+            gzip=1.10-4 \
+            ca-certificates=20210119 && \
+    apt-get clean && \
     rm -rf /var/lib/apt/lists/*
