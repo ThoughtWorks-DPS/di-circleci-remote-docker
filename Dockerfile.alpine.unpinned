@@ -3,6 +3,7 @@ FROM alpine:latest
 LABEL maintainer=<nic.cheneweth@thoughtworks.com>
 
 # minimum packages required for use as a circleci remote-docker primary container
+# hadolint ignore=DL3008
 RUN apk add --no-cache \
         git \
         openssh \
